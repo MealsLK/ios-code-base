@@ -9,23 +9,29 @@
 /* Begin PBXBuildFile section */
 		32EA837C23E406880032E5A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA837B23E406880032E5A0 /* AppDelegate.swift */; };
 		32EA837E23E406880032E5A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA837D23E406880032E5A0 /* SceneDelegate.swift */; };
-		32EA838023E406880032E5A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA837F23E406880032E5A0 /* ViewController.swift */; };
+		32EA838023E406880032E5A0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA837F23E406880032E5A0 /* LoginController.swift */; };
 		32EA838323E406880032E5A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32EA838123E406880032E5A0 /* Main.storyboard */; };
 		32EA838623E406880032E5A0 /* Meals_lk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32EA838423E406880032E5A0 /* Meals_lk.xcdatamodeld */; };
 		32EA838823E406890032E5A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32EA838723E406890032E5A0 /* Assets.xcassets */; };
 		32EA838B23E406890032E5A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32EA838923E406890032E5A0 /* LaunchScreen.storyboard */; };
+		32EB25BF23F94DD8009FB9BF /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB25BE23F94DD8009FB9BF /* MainTabController.swift */; };
+		32EB25C123F954D0009FB9BF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB25C023F954D0009FB9BF /* HomeViewController.swift */; };
+		32EB25C323F95DF9009FB9BF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB25C223F95DF9009FB9BF /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		32EA837823E406880032E5A0 /* Meals.lk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meals.lk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32EA837B23E406880032E5A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32EA837D23E406880032E5A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		32EA837F23E406880032E5A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32EA837F23E406880032E5A0 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		32EA838223E406880032E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32EA838523E406880032E5A0 /* Meals_lk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Meals_lk.xcdatamodel; sourceTree = "<group>"; };
 		32EA838723E406890032E5A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32EA838A23E406890032E5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32EA838C23E406890032E5A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32EB25BE23F94DD8009FB9BF /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		32EB25C023F954D0009FB9BF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		32EB25C223F95DF9009FB9BF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3242FAB723F90C7F00021804 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				32EA838923E406890032E5A0 /* LaunchScreen.storyboard */,
+				32EA838123E406880032E5A0 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3242FAB823F90C8600021804 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				32EA837F23E406880032E5A0 /* LoginController.swift */,
+				32EB25BE23F94DD8009FB9BF /* MainTabController.swift */,
+				32EB25C023F954D0009FB9BF /* HomeViewController.swift */,
+				32EB25C223F95DF9009FB9BF /* ProfileViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3242FAB923F90C9100021804 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		32EA836F23E406870032E5A0 = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +91,14 @@
 		32EA837A23E406880032E5A0 /* Meals.lk */ = {
 			isa = PBXGroup;
 			children = (
+				32EA838723E406890032E5A0 /* Assets.xcassets */,
 				32EA837B23E406880032E5A0 /* AppDelegate.swift */,
 				32EA837D23E406880032E5A0 /* SceneDelegate.swift */,
-				32EA837F23E406880032E5A0 /* ViewController.swift */,
-				32EA838123E406880032E5A0 /* Main.storyboard */,
-				32EA838723E406890032E5A0 /* Assets.xcassets */,
-				32EA838923E406890032E5A0 /* LaunchScreen.storyboard */,
 				32EA838C23E406890032E5A0 /* Info.plist */,
 				32EA838423E406880032E5A0 /* Meals_lk.xcdatamodeld */,
+				3242FAB923F90C9100021804 /* Model */,
+				3242FAB823F90C8600021804 /* Controller */,
+				3242FAB723F90C7F00021804 /* View */,
 			);
 			path = Meals.lk;
 			sourceTree = "<group>";
@@ -141,10 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32EA838023E406880032E5A0 /* ViewController.swift in Sources */,
+				32EA838023E406880032E5A0 /* LoginController.swift in Sources */,
 				32EA838623E406880032E5A0 /* Meals_lk.xcdatamodeld in Sources */,
+				32EB25BF23F94DD8009FB9BF /* MainTabController.swift in Sources */,
 				32EA837C23E406880032E5A0 /* AppDelegate.swift in Sources */,
+				32EB25C323F95DF9009FB9BF /* ProfileViewController.swift in Sources */,
 				32EA837E23E406880032E5A0 /* SceneDelegate.swift in Sources */,
+				32EB25C123F954D0009FB9BF /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
