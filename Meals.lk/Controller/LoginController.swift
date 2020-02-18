@@ -7,19 +7,17 @@
 //
 
 import UIKit
+import FirebaseUI
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController {
     
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var loginWithGoogle: UIButton!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    
-    var activeField: UITextField?
     
     
     override func viewDidLoad() {
@@ -29,18 +27,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.email.delegate = self
         self.password.delegate = self
         
-        //Adding notifies on keyboard appearing
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
-        //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.scrollView.keyboardDismissMode = .onDrag
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        
+        // Observe keyboard change
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         
         // UI
         loginButton.layer.cornerRadius = 10
-        loginWithGoogle.layer.cornerRadius = 10
 
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        view.endEditing(true)
+        email.text = ""
+        password.text = ""
         
     }
     
@@ -51,68 +60,61 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         
+        
+        
+        
+        
+        
+        
+        onLoginSucess()
+        
+    }
+    
+    func onLoginSucess(){
+        
         let mainTabController = storyboard?.instantiateViewController(identifier: "MainTabController") as! MainTabController
         
         show(mainTabController, sender: nil)
         
+    }
+    
+    func onLoginFail(){
         
     }
     
+    
     @IBAction func unwindToLogin(_ sender : UIStoryboardSegue) {}
 
-    //Calls this function when the tap is recognized.
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
+}
+
+// MARK: UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
+}
 
-    func registerForKeyboardNotifications(){
-        }
-
-    func deregisterFromKeyboardNotifications(){
-        //Removing notifies on keyboard appearing
-        }
-
-    @objc func keyboardWasShown(notification: NSNotification){
-        print("selected")
-        //Need to calculate keyboard exact size due to Apple suggestions
-        self.scrollView.isScrollEnabled = true
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height, right: 0.0)
-
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-
-        var aRect : CGRect = self.view.frame
-        aRect.size.height -= keyboardSize!.height + 500
+// MARK: Keyboard Handling
+extension LoginViewController {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let userInfo = notification.userInfo!
         
-        if let activeField = self.activeField {
-            if (!aRect.contains(activeField.frame.origin)){
-                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
-            }
-        }
-    }
-
-    @objc func keyboardWillBeHidden(notification: NSNotification){
-        //Once keyboard disappears, restore original positions
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -keyboardSize!.height, right: 0.0)
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-        self.view.endEditing(true)
-        self.scrollView.isScrollEnabled = false
-    }
-
-    func textFieldDidBeginEditing(_ textField: UITextField){
+        let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
         
-        activeField = textField
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+        
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
-
-    func textFieldDidEndEditing(_ textField: UITextField){
-        activeField = nil
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentInset = UIEdgeInsets.zero
+        
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
-//
+    
+    
 }
 
